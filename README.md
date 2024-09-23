@@ -1,2 +1,2 @@
 # LearnGodot
- Just a place to much around with Godot
+ Just a place to muck around with Godot

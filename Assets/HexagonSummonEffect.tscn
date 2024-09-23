@@ -1,0 +1,73 @@
+[gd_scene load_steps=7 format=3 uid="uid://c2ecc2m34wqlr"]
+
+[ext_resource type="Texture2D" uid="uid://csmc83621msaj" path="res://Assets/a1843961409a40687a09056418bf6132d0d87ca8.png" id="1_wroo1"]
+
+[sub_resource type="Curve" id="Curve_24quh"]
+_data = [Vector2(0, 20), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_d5j0v"]
+offsets = PackedFloat32Array(0, 0.313333, 1)
+colors = PackedColorArray(1, 0.782031, 0.987775, 0, 1, 0.395325, 0.995662, 1, 1, 1, 1, 1)
+
+[sub_resource type="Curve" id="Curve_oe5al"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 12), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_2d87f"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 8), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_115o4"]
+offsets = PackedFloat32Array(0.02, 0.166667, 0.846667, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 0.435294, 1, 0.196078, 1, 1, 1, 0.196078, 1, 1, 1, 0)
+
+[node name="ParticleRoot" type="Node2D"]
+y_sort_enabled = true
+
+[node name="PurpleRain" type="CPUParticles2D" parent="."]
+z_index = 32
+position = Vector2(0, -128)
+amount = 64
+lifetime = 0.55
+emission_shape = 3
+emission_rect_extents = Vector2(30, 30)
+particle_flag_align_y = true
+direction = Vector2(0, 1)
+spread = 0.0
+gravity = Vector2(0, -980)
+initial_velocity_min = 500.0
+initial_velocity_max = 500.0
+tangential_accel_min = -100.0
+tangential_accel_max = 100.0
+split_scale = true
+scale_curve_x = null
+scale_curve_y = SubResource("Curve_24quh")
+color = Color(1, 0.622599, 0.984478, 1)
+color_ramp = SubResource("Gradient_d5j0v")
+hue_variation_min = -1.0
+hue_variation_max = 1.0
+
+[node name="Vortex" type="CPUParticles2D" parent="."]
+z_index = 32
+amount = 16
+emission_shape = 3
+emission_rect_extents = Vector2(16, 16)
+spread = 180.0
+gravity = Vector2(0, 0)
+orbit_velocity_min = 0.33
+orbit_velocity_max = 0.33
+radial_accel_min = 16.0
+radial_accel_max = 32.0
+split_scale = true
+scale_curve_x = SubResource("Curve_oe5al")
+scale_curve_y = SubResource("Curve_2d87f")
+color = Color(1, 0.643137, 1, 1)
+color_ramp = SubResource("Gradient_115o4")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+z_index = 32
+scale = Vector2(0.26, 0.26)
+color = Color(1, 0.518906, 0.830972, 1)
+energy = 1.5
+texture = ExtResource("1_wroo1")

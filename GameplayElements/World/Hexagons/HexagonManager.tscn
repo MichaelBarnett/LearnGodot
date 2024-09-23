@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://c1qf37mxx1nor"]
+
+[ext_resource type="Script" path="res://GameplayElements/World/Hexagons/HexagonManager.gd" id="1_03j65"]
+
+[node name="WorldManager" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_03j65")
