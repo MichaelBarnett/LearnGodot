@@ -1,3 +1,4 @@
+#class_name HexagonManager
 extends Node2D
 
 const cube_direction_vectors = [

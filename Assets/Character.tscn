@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://dt6cnw8bxuvat"]
+[gd_scene load_steps=6 format=3 uid="uid://dt6cnw8bxuvat"]
 
+[ext_resource type="Script" path="res://GameplayElements/Characters/IsoNode2D.gd" id="1_agyvd"]
 [ext_resource type="Texture2D" uid="uid://c4hhheekpqypp" path="res://Assets/PlaceholderArcherMan.png" id="1_xtwkh"]
 [ext_resource type="Script" path="res://Assets/character_body_2d.gd" id="2_81rfv"]
 
@@ -19,22 +20,11 @@ animations = [{
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 z_index = 1
-z_as_relative = false
 y_sort_enabled = true
 script = ExtResource("2_81rfv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_qmc6n")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-y_sort_enabled = true
-position = Vector2(1, -7)
-sprite_frames = SubResource("SpriteFrames_o82kt")
-
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(3, 3)
-position_smoothing_enabled = true
-position_smoothing_speed = 30.0
 
 [node name="debug_label" type="Label" parent="."]
 visible = false
@@ -45,3 +35,16 @@ offset_top = -107.0
 offset_right = -2.0
 offset_bottom = 107.0
 text = "default text"
+
+[node name="IsoNode2D" type="Node2D" parent="."]
+y_sort_enabled = true
+script = ExtResource("1_agyvd")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="IsoNode2D"]
+position = Vector2(1, -7)
+sprite_frames = SubResource("SpriteFrames_o82kt")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
+position_smoothing_enabled = true
+position_smoothing_speed = 30.0
