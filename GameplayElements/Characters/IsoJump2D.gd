@@ -1,5 +1,8 @@
-class_name IsoNode2D
+class_name IsoJump2D
 extends Node2D
+
+# IsoJump need to be a child of the intended Y Root, where YSort is disabled. 
+# It is important that IsoJump is NOT YSorted.
 
 var height : float = 0
 var height_velocity : float = 0
@@ -14,7 +17,7 @@ var elastic_strength : float = 0
 func _ready() -> void:
 	elastic_strength = calculate_jump_velocity_for_height(elastic_height)
 	# Just override these, as this is what they always need to be.
-	y_sort_enabled = false
+	y_sort_enabled = false # This is necessary.
 	z_as_relative = true
 
 func calculate_jump_velocity_for_height(height : float):
@@ -43,4 +46,4 @@ func _physics_process(delta: float) -> void:
 
 		# Apply offset to self.
 		position.y = height
-		z_index = -height
+		#z_index = -height

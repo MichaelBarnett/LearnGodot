@@ -1,19 +1,22 @@
 extends CharacterBody2D
 
-@export var SPEED = 64.0
+@export var SPEED = 128.0
 @export var JUMP_HEIGHT = 32.0
 var JUMP_STRENGTH = 0
 var debug_mode = false
 var CurrentHexagonID := Vector2i(0,0)
 const HEXAGON_Y_BIAS = 0.866
 
+@onready var jump_component = $YRoot/Jumper
+
 func _ready() -> void:
 	# Calculate the jump strength (V) = V^2 = 0 + -2 * a * d
-	JUMP_STRENGTH = $IsoNode2D.calculate_jump_velocity_for_height(JUMP_HEIGHT)
+	JUMP_STRENGTH = jump_component.calculate_jump_velocity_for_height(JUMP_HEIGHT)
 
 func _process(delta: float) -> void:
 	if  %HexManager:
 		CurrentHexagonID = %HexManager.get_nearest_hexagon_id(Vector2(position.x, position.y))
+		var close_ring
 		%HexManager.get_or_create_hexagon(CurrentHexagonID)
 	
 func update_debug_text(delta : float) -> void:
@@ -32,7 +35,7 @@ func _physics_process(delta: float) -> void:
 		
 	var interact := Input.is_action_just_pressed("Interact")
 	if interact:
-		$IsoNode2D.jump(JUMP_STRENGTH)
+		jump_component.jump(JUMP_STRENGTH)
 	
 	var debug_pressed := Input.is_action_just_pressed("Debug")
 	if debug_pressed:
@@ -50,6 +53,10 @@ func _physics_process(delta: float) -> void:
 
 	if left_right_axis:
 		velocity.x = left_right_axis * SPEED
+		if left_right_axis > 0:
+			$YRoot/Jumper/AnimatedSprite2D.flip_h = false
+		if left_right_axis < 0:
+			$YRoot/Jumper/AnimatedSprite2D.flip_h = true
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 

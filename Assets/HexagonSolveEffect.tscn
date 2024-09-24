@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://b350wwlhi4e8c"]
+
+[sub_resource type="Curve" id="Curve_f5o4w"]
+_data = [Vector2(0, 10), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_24quh"]
+_data = [Vector2(0.25, 1), 0.0, 0.0, 0, 0, Vector2(0.5, 10), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_o7mab"]
+
+[sub_resource type="Gradient" id="Gradient_xuotv"]
+colors = PackedColorArray(1, 0.618978, 0.780226, 1, 0.80535, 0.696292, 1, 1)
+
+[node name="ParticleRoot" type="Node2D"]
+y_sort_enabled = true
+
+[node name="PurpleRain" type="CPUParticles2D" parent="."]
+z_index = 32
+amount = 32
+lifetime = 0.55
+emission_shape = 3
+emission_rect_extents = Vector2(30, 30)
+particle_flag_align_y = true
+direction = Vector2(0, -1)
+spread = 0.0
+gravity = Vector2(0, -200)
+split_scale = true
+scale_curve_x = SubResource("Curve_f5o4w")
+scale_curve_y = SubResource("Curve_24quh")
+color = Color(1, 0.564706, 1, 1)
+color_ramp = SubResource("Gradient_o7mab")
+color_initial_ramp = SubResource("Gradient_xuotv")
+hue_variation_min = -1.0
+hue_variation_max = 1.0

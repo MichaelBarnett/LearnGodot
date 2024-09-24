@@ -1,0 +1,47 @@
+[gd_scene load_steps=4 format=3 uid="uid://cpxfjmaesgyfy"]
+
+[ext_resource type="Script" path="res://node_2d.gd" id="1_6ut5d"]
+[ext_resource type="Texture2D" uid="uid://c4hhheekpqypp" path="res://Assets/PlaceholderArcherMan.png" id="2_qtl0w"]
+[ext_resource type="Script" path="res://GameplayElements/Characters/IsoJump2D.gd" id="3_l0bhy"]
+
+[node name="Node2D" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_6ut5d")
+
+[node name="Node2D" type="Node2D" parent="."]
+y_sort_enabled = true
+position = Vector2(48, 25)
+
+[node name="Node2D" type="Node2D" parent="Node2D"]
+position = Vector2(0, -5)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Node2D/Node2D"]
+position = Vector2(3, -7)
+texture = ExtResource("2_qtl0w")
+
+[node name="Node2D2" type="Node2D" parent="."]
+y_sort_enabled = true
+position = Vector2(24, 17)
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D2"]
+position = Vector2(0, -7)
+texture = ExtResource("2_qtl0w")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Node2D2"]
+position = Vector2(12, -7)
+texture = ExtResource("2_qtl0w")
+
+[node name="YSortedRoot" type="Node2D" parent="."]
+y_sort_enabled = true
+position = Vector2(65, 35)
+
+[node name="YRoot" type="Node2D" parent="YSortedRoot"]
+position = Vector2(3, 0)
+
+[node name="IsoNode2D" type="Node2D" parent="YSortedRoot/YRoot"]
+position = Vector2(0, -15)
+script = ExtResource("3_l0bhy")
+
+[node name="Sprite2D2" type="Sprite2D" parent="YSortedRoot/YRoot/IsoNode2D"]
+position = Vector2(3, -7)
+texture = ExtResource("2_qtl0w")
