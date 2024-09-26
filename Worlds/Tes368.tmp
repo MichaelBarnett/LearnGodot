@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://1ultwastqupb"]
+
+[ext_resource type="PackedScene" uid="uid://c1qf37mxx1nor" path="res://GameplayElements/World/Hexagons/HexagonManager.tscn" id="2_ohxqg"]
+[ext_resource type="PackedScene" uid="uid://dt6cnw8bxuvat" path="res://Assets/Character.tscn" id="3_yu0jg"]
+
+[node name="WorldBase" type="Node2D"]
+y_sort_enabled = true
+
+[node name="HexManager" parent="." instance=ExtResource("2_ohxqg")]
+unique_name_in_owner = true
+z_index = -1
+
+[node name="PlayerCharacter" parent="." instance=ExtResource("3_yu0jg")]
+unique_name_in_owner = true

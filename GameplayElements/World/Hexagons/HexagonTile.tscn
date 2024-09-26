@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://dhyco2plw1s6"]
+[gd_scene load_steps=5 format=3 uid="uid://dhyco2plw1s6"]
 
 [ext_resource type="Script" path="res://GameplayElements/World/Hexagons/Hexagontile.gd" id="1_7eh45"]
 [ext_resource type="Texture2D" uid="uid://bpgsn3p3ch3fa" path="res://Assets/HexaTest.png" id="2_y6trw"]
+[ext_resource type="Texture2D" uid="uid://cefxmjd7gbs0x" path="res://Assets/tree01.png" id="3_le3g0"]
+[ext_resource type="Texture2D" uid="uid://bmicauswout7l" path="res://Assets/Shadow.png" id="4_84o5g"]
 
 [node name="HexagonTile" type="Node2D"]
 y_sort_enabled = true
@@ -12,3 +14,17 @@ y_sort_enabled = true
 position = Vector2(0, 32)
 texture = ExtResource("2_y6trw")
 offset = Vector2(0, -32)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 10
+z_as_relative = false
+y_sort_enabled = true
+position = Vector2(52, 3)
+texture = ExtResource("3_le3g0")
+offset = Vector2(0, -36)
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D"]
+z_index = -10
+position = Vector2(1, -6)
+scale = Vector2(2, 1.7)
+texture = ExtResource("4_84o5g")

@@ -10,16 +10,18 @@ const AXIAL_DIRECTION_VECTORS = [
 	Vector2i(-1, 0), Vector2i(0, -1), Vector2i(+1, -1), 
 ]
 
-const HEX_SIZE : Vector2 = Vector2(64, 48)
-const HEX_HALFWIDTH : float = HEX_SIZE.x / 2
+const HEX_SIZE : Vector2 = Vector2(64, 64)
+const HEX_OFFSETS : Vector2 = Vector2(HEX_SIZE.x, HEX_SIZE.y * 3/4)
+const HEX_ASPECT_RATIO : float = 2.0 / sqrt(3)
+const HEX_HALFWIDTH : float = HEX_OFFSETS.x / 2
 
 static func axial_to_pixel(coord : Vector2) -> Vector2:
-	return Vector2((coord.x * HEX_SIZE.x) + coord.y * HEX_HALFWIDTH, 
-					coord.y * HEX_SIZE.y)
+	return Vector2((coord.x * HEX_OFFSETS.x) + coord.y * HEX_HALFWIDTH, 
+					coord.y * HEX_OFFSETS.y)
 
 static func pixel_to_axial(coord : Vector2) -> Vector2:
-	var r = coord.y / HEX_SIZE.y
-	var q = (coord.x - (r * HEX_HALFWIDTH)) / HEX_SIZE.x
+	var r = coord.y / HEX_OFFSETS.y
+	var q = (coord.x - (r * HEX_HALFWIDTH)) / HEX_OFFSETS.x
 	return Vector2(q,r)
 	
 static func get_nearest_hexagon_axiali(coord : Vector2) -> Vector2i:

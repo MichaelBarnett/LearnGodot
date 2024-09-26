@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dt6cnw8bxuvat"]
+[gd_scene load_steps=7 format=3 uid="uid://dt6cnw8bxuvat"]
 
 [ext_resource type="Script" path="res://GameplayElements/Characters/IsoJump2D.gd" id="1_agyvd"]
 [ext_resource type="Texture2D" uid="uid://c4hhheekpqypp" path="res://Assets/PlaceholderArcherMan.png" id="1_xtwkh"]
 [ext_resource type="Script" path="res://Assets/character_body_2d.gd" id="2_81rfv"]
+[ext_resource type="Texture2D" uid="uid://bmicauswout7l" path="res://Assets/Shadow.png" id="4_ybe82"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qmc6n"]
 radius = 4.0
@@ -19,7 +20,7 @@ animations = [{
 }]
 
 [node name="CharacterMovement" type="CharacterBody2D"]
-z_index = 1
+z_as_relative = false
 y_sort_enabled = true
 script = ExtResource("2_81rfv")
 
@@ -38,14 +39,23 @@ text = "default text"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(3, 3)
-position_smoothing_enabled = true
-position_smoothing_speed = 30.0
+position_smoothing_speed = 16.0
 
 [node name="YRoot" type="Node2D" parent="."]
+z_as_relative = false
 
 [node name="Jumper" type="Node2D" parent="YRoot"]
+z_as_relative = false
 script = ExtResource("1_agyvd")
+gravity_constant = 10000.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="YRoot/Jumper"]
+z_index = 10
 position = Vector2(1, -7)
 sprite_frames = SubResource("SpriteFrames_o82kt")
+
+[node name="Shadow" type="Sprite2D" parent="YRoot"]
+z_index = 1
+z_as_relative = false
+position = Vector2(0, -6)
+texture = ExtResource("4_ybe82")

@@ -1,4 +1,4 @@
-#class_name HexagonManager
+class_name HexagonManager
 extends Node2D
 
 const cube_direction_vectors = [
@@ -12,6 +12,7 @@ const axial_direction_vectors = [
 ]
 
 const HEX_SIZE : Vector2 = Vector2(64, 48)
+const HEX_ASPECT_RATIO : float = HEX_SIZE.y / HEX_SIZE.x
 const HEX_HALFWIDTH : float = HEX_SIZE.x / 2
 
 # Preload the HexagonTile scene
@@ -34,19 +35,21 @@ func _create_hexagon(coord : Vector2i) -> bool:
 
 	return true
 
-func get_or_create_hexagon(coord : Vector2i):
+func get_or_create_hexagon(coord : Vector2i) -> PackedScene:
 	""" 
-	Check a tile for an existing hexagon, or create a new one if none exists. 
+	Check a tile for an existing hexagon, 
+	or create a new one if none exists. 
 	"""
 	var hex_tile = placed_hexagons.find_key(coord)
 	if hex_tile:
 		return hex_tile
 	_create_hexagon(coord)
-	pass
+	return null
 	
 func wake_hexagon(coord : Vector2i) -> void:
 	""" 
-	Awaken a target hexagon, it will solve its generation in a background process. 
+	Awaken a target hexagon, it will solve its 
+	generation in a background process. 
 	"""
 	pass
 	

@@ -6,7 +6,8 @@ extends Node2D
 
 var height : float = 0
 var height_velocity : float = 0
-@export var gravity : Vector2 = Vector2(748 * 0.8, 758 * 1.2) # Realistic gravity at 8 pixels / metre.
+@export var gravity_constant : float = 748
+var gravity : Vector2 = Vector2(gravity_constant * 0.75, gravity_constant * 1.25) # Realistic gravity at 8 pixels / metre.
 @export var can_bounce : bool = false
 @export var bounce_dampen : float = 0.5
 @export var elastic : bool = false

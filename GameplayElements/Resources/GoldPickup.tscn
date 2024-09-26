@@ -1,25 +1,30 @@
-[gd_scene load_steps=5 format=3 uid="uid://ckt8ipwpb5lok"]
+[gd_scene load_steps=6 format=3 uid="uid://ckt8ipwpb5lok"]
 
 [ext_resource type="Script" path="res://GameplayElements/Characters/IsoJump2D.gd" id="1_1ra0q"]
 [ext_resource type="Texture2D" uid="uid://0n41ij2murm1" path="res://Assets/gold.png" id="1_x1ad7"]
 [ext_resource type="Script" path="res://GameplayElements/Resources/GoldPickup.gd" id="2_5m6tq"]
+[ext_resource type="Texture2D" uid="uid://bmicauswout7l" path="res://Assets/Shadow.png" id="4_qwffb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_c0lix"]
 radius = 4.0
 
 [node name="Root" type="Node2D"]
-z_index = 1
+z_as_relative = false
 y_sort_enabled = true
 
 [node name="YRoot" type="Node2D" parent="."]
+z_as_relative = false
 
 [node name="IsoNode2D" type="Node2D" parent="YRoot"]
+z_as_relative = false
 script = ExtResource("1_1ra0q")
 bounce_dampen = 1.0
 elastic = true
 elastic_height = 12.0
 
 [node name="GoldPickup" type="Sprite2D" parent="YRoot/IsoNode2D"]
+z_index = 10
+z_as_relative = false
 position = Vector2(0, -4)
 texture = ExtResource("1_x1ad7")
 script = ExtResource("2_5m6tq")
@@ -31,3 +36,10 @@ collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="YRoot/Area2D"]
 shape = SubResource("CircleShape2D_c0lix")
+
+[node name="Sprite2D" type="Sprite2D" parent="YRoot"]
+z_index = 1
+z_as_relative = false
+position = Vector2(0, -3)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_qwffb")

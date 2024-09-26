@@ -9,12 +9,19 @@ y_sort_enabled = true
 
 [node name="HexManager" parent="." instance=ExtResource("2_ohxqg")]
 unique_name_in_owner = true
-
-[node name="GoldPickup" parent="." instance=ExtResource("3_8btm3")]
-position = Vector2(53, 11)
+z_index = -1
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("3_yu0jg")]
 unique_name_in_owner = true
 
-[node name="GoldPickup2" parent="." instance=ExtResource("3_8btm3")]
-position = Vector2(69, -29)
+[node name="Root" parent="." instance=ExtResource("3_8btm3")]
+position = Vector2(65, 27)
+
+[node name="Root2" parent="." instance=ExtResource("3_8btm3")]
+position = Vector2(29, 41)
+
+[node name="Root3" parent="." instance=ExtResource("3_8btm3")]
+position = Vector2(59, 59)
+
+[node name="Root4" parent="." instance=ExtResource("3_8btm3")]
+position = Vector2(92, 43)

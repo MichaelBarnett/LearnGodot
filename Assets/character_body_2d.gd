@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
-@export var SPEED = 128.0
-@export var JUMP_HEIGHT = 32.0
-var JUMP_STRENGTH = 0
+@export var SPEED = 96.0
+@export var JUMP_HEIGHT = 12.0
+var JUMP_STRENGTH : float = 0
 var debug_mode = false
 var CurrentHexagonID := Vector2i(0,0)
 const HEXAGON_Y_BIAS = 0.866
@@ -64,7 +64,8 @@ func _physics_process(delta: float) -> void:
 		velocity.y = up_down_axis * SPEED
 	else:
 		velocity.y = move_toward(velocity.y, 0, SPEED)
+
 	velocity = velocity.limit_length(SPEED)
-	velocity.y = velocity.y * HEXAGON_Y_BIAS
+	velocity.y = velocity.y * HexLib.HEX_ASPECT_RATIO
 	
 	move_and_slide()

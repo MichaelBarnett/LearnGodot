@@ -11,6 +11,10 @@ var current_effect
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	var spawn_x = randf_range(24,-24)
+	var spawn_y = randf_range(24,-24)
+	$Sprite2D.flip_h = bool(randi_range(0,1))
+	$Sprite2D.position = Vector2(spawn_x, spawn_y)
 	pass # Replace with function body.
 	
 func start_solving() -> void:
