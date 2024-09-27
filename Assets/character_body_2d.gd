@@ -1,9 +1,10 @@
 extends CharacterBody2D
 
-@export var SPEED = 96.0
+@export var SPEED = 64.0
+@export var ACCEL = 16.0
+@export var DECEL = 32.0
 @export var JUMP_HEIGHT = 12.0
 var JUMP_STRENGTH : float = 0
-var debug_mode = false
 var CurrentHexagonID := Vector2i(0,0)
 const HEXAGON_Y_BIAS = 0.866
 
@@ -19,15 +20,11 @@ func _process(delta: float) -> void:
 		var close_ring
 		%HexManager.get_or_create_hexagon(CurrentHexagonID)
 	
-func update_debug_text(delta : float) -> void:
-	$debug_label.text = (" FPS: " +  str(Engine.get_frames_per_second()) + "/" + str(Engine.max_fps) + "\n" + 
-			" ms : " + str(delta*1000.0)
-	)
-	
 func _physics_process(delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration.
 	var left_right_axis := Input.get_axis("MoveLeft", "MoveRight")
 	var up_down_axis := Input.get_axis("MoveUp", "MoveDown")
+	up_down_axis = up_down_axis * lerp(HexLib.HEX_ASPECT_RATIO, 0.5,abs(left_right_axis))
 	
 	var escape := Input.is_action_just_pressed("Quit")
 	if escape:
@@ -36,36 +33,23 @@ func _physics_process(delta: float) -> void:
 	var interact := Input.is_action_just_pressed("Interact")
 	if interact:
 		jump_component.jump(JUMP_STRENGTH)
-	
-	var debug_pressed := Input.is_action_just_pressed("Debug")
-	if debug_pressed:
-		if debug_mode == true:
-			debug_mode = false
-			print("`Deactivated debug mode!")
-			$debug_label.visible = false
-		else:
-			debug_mode = true
-			print("Activated debug mode!")
-			$debug_label.visible = true
-
-	if debug_mode:
-		update_debug_text(delta)
 
 	if left_right_axis:
-		velocity.x = left_right_axis * SPEED
+		velocity.x = move_toward(velocity.x, left_right_axis*SPEED, ACCEL)
 		if left_right_axis > 0:
 			$YRoot/Jumper/AnimatedSprite2D.flip_h = false
 		if left_right_axis < 0:
 			$YRoot/Jumper/AnimatedSprite2D.flip_h = true
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.x = move_toward(velocity.x, 0, DECEL)
 
 	if up_down_axis:
-		velocity.y = up_down_axis * SPEED
+		velocity.y = move_toward(velocity.y, up_down_axis*SPEED, ACCEL)
 	else:
-		velocity.y = move_toward(velocity.y, 0, SPEED)
+		velocity.y = move_toward(velocity.y, 0, DECEL* HexLib.HEX_ASPECT_RATIO)
 
+	velocity.y = velocity.y / HexLib.HEX_ASPECT_RATIO
 	velocity = velocity.limit_length(SPEED)
 	velocity.y = velocity.y * HexLib.HEX_ASPECT_RATIO
-	
+
 	move_and_slide()

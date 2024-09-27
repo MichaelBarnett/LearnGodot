@@ -40,6 +40,5 @@ shape = SubResource("CircleShape2D_c0lix")
 [node name="Sprite2D" type="Sprite2D" parent="YRoot"]
 z_index = 1
 z_as_relative = false
-position = Vector2(0, -3)
-scale = Vector2(0.5, 0.5)
+position = Vector2(0, -6)
 texture = ExtResource("4_qwffb")

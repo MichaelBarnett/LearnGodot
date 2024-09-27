@@ -37,10 +37,6 @@ offset_right = -2.0
 offset_bottom = 107.0
 text = "default text"
 
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(3, 3)
-position_smoothing_speed = 16.0
-
 [node name="YRoot" type="Node2D" parent="."]
 z_as_relative = false
 

@@ -69,5 +69,5 @@ color_ramp = SubResource("Gradient_115o4")
 z_index = 32
 scale = Vector2(0.26, 0.26)
 color = Color(1, 0.518906, 0.830972, 1)
-energy = 1.5
+energy = 0.5
 texture = ExtResource("1_wroo1")

@@ -1,11 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://1ultwastqupb"]
+[gd_scene load_steps=6 format=3 uid="uid://1ultwastqupb"]
 
 [ext_resource type="PackedScene" uid="uid://c1qf37mxx1nor" path="res://GameplayElements/World/Hexagons/HexagonManager.tscn" id="2_ohxqg"]
 [ext_resource type="PackedScene" uid="uid://ckt8ipwpb5lok" path="res://GameplayElements/Resources/GoldPickup.tscn" id="3_8btm3"]
 [ext_resource type="PackedScene" uid="uid://dt6cnw8bxuvat" path="res://Assets/Character.tscn" id="3_yu0jg"]
+[ext_resource type="PackedScene" uid="uid://c2ecc2m34wqlr" path="res://Assets/HexagonSummonEffect.tscn" id="4_thdp0"]
+[ext_resource type="PackedScene" uid="uid://b350wwlhi4e8c" path="res://Assets/HexagonSolveEffect.tscn" id="5_wumt2"]
 
 [node name="WorldBase" type="Node2D"]
 y_sort_enabled = true
+texture_filter = 1
 
 [node name="HexManager" parent="." instance=ExtResource("2_ohxqg")]
 unique_name_in_owner = true
@@ -24,4 +27,12 @@ position = Vector2(29, 41)
 position = Vector2(59, 59)
 
 [node name="Root4" parent="." instance=ExtResource("3_8btm3")]
-position = Vector2(92, 43)
+position = Vector2(91.5, 43)
+
+[node name="ParticleRoot" parent="." instance=ExtResource("4_thdp0")]
+position = Vector2(329, 159)
+
+[node name="ParticleRoot2" parent="." instance=ExtResource("5_wumt2")]
+position = Vector2(478, -37)
+
+[node name="Camera2D" type="Camera2D" parent="."]
