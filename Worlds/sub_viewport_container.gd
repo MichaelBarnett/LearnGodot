@@ -4,7 +4,7 @@ extends SubViewportContainer
 @onready var my_camera = $SubViewport/WorldBase/Camera2D
 @onready var subview = $SubViewport
 @onready var resolution = $"../Label"
-@export var CAMERA_SPEED : float = 10.0
+@export var CAMERA_SPEED : float = 5.0
 @export var CAMERA_AHEAD_SCALE : float = 0.25
 
 const SCALE : int = 3

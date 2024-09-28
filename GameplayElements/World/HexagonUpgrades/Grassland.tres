@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="HexagonData" load_steps=3 format=3 uid="uid://b5r351knf4c2"]
+
+[ext_resource type="Script" path="res://GameplayElements/Resources/Item_RESOURCE.gd" id="1_b4fp2"]
+[ext_resource type="Script" path="res://GameplayElements/World/HexagonUpgrades/HexagonData_RESOURCE.gd" id="2_cnqwj"]
+
+[resource]
+script = ExtResource("2_cnqwj")
+tilemap_id = Vector2i(0, 0)
+cost_to_order = 0
+cost_to_clear = Array[ExtResource("1_b4fp2")]([])
+cost_to_build = Array[ExtResource("1_b4fp2")]([])
+build_points = 0.0

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="HexagonData" load_steps=3 format=3 uid="uid://be144h4q5tvt5"]
+
+[ext_resource type="Script" path="res://GameplayElements/Resources/Item_RESOURCE.gd" id="1_n4ios"]
+[ext_resource type="Script" path="res://GameplayElements/World/HexagonUpgrades/HexagonData_RESOURCE.gd" id="2_pol43"]
+
+[resource]
+script = ExtResource("2_pol43")
+tilemap_id = Vector2i(0, 0)
+recipes = Array[ExtResource("2_pol43")]([])
+cost_to_order = 1
+cost_to_build = Array[ExtResource("1_n4ios")]([])
+cost_to_clear = Array[ExtResource("1_n4ios")]([])
+build_points = 0

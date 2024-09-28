@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="HexagonData" load_steps=3 format=3 uid="uid://b6e5vhvniiuay"]
+
+[ext_resource type="Script" path="res://GameplayElements/Resources/Item_RESOURCE.gd" id="1_3drin"]
+[ext_resource type="Script" path="res://GameplayElements/World/HexagonUpgrades/HexagonData_RESOURCE.gd" id="2_7uoor"]
+
+[resource]
+script = ExtResource("2_7uoor")
+tilemap_id = Vector2i(0, 0)
+recipes = Array[ExtResource("2_7uoor")]([])
+cost_to_order = 0
+cost_to_build = Array[ExtResource("1_3drin")]([])
+cost_to_clear = Array[ExtResource("1_3drin")]([])
+build_points = 0

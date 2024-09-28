@@ -1,5 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://c2ecc2m34wqlr"]
+[gd_scene load_steps=8 format=3 uid="uid://c2ecc2m34wqlr"]
 
+[ext_resource type="Script" path="res://Assets/hexagon_summon_effect.gd" id="1_e2g4t"]
 [ext_resource type="Texture2D" uid="uid://csmc83621msaj" path="res://Assets/a1843961409a40687a09056418bf6132d0d87ca8.png" id="1_wroo1"]
 
 [sub_resource type="Curve" id="Curve_24quh"]
@@ -24,12 +25,15 @@ colors = PackedColorArray(1, 1, 1, 0, 1, 0.435294, 1, 0.196078, 1, 1, 1, 0.19607
 
 [node name="ParticleRoot" type="Node2D"]
 y_sort_enabled = true
+script = ExtResource("1_e2g4t")
 
 [node name="PurpleRain" type="CPUParticles2D" parent="."]
 z_index = 32
 position = Vector2(0, -128)
+emitting = false
 amount = 64
 lifetime = 0.55
+one_shot = true
 emission_shape = 3
 emission_rect_extents = Vector2(30, 30)
 particle_flag_align_y = true
@@ -50,7 +54,9 @@ hue_variation_max = 1.0
 
 [node name="Vortex" type="CPUParticles2D" parent="."]
 z_index = 32
+emitting = false
 amount = 16
+one_shot = true
 emission_shape = 3
 emission_rect_extents = Vector2(16, 16)
 spread = 180.0
