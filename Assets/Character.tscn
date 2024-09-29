@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dt6cnw8bxuvat"]
+[gd_scene load_steps=8 format=3 uid="uid://dt6cnw8bxuvat"]
 
 [ext_resource type="Script" path="res://GameplayElements/Characters/IsoJump2D.gd" id="1_agyvd"]
 [ext_resource type="Texture2D" uid="uid://c4hhheekpqypp" path="res://Assets/PlaceholderArcherMan.png" id="1_xtwkh"]
 [ext_resource type="Script" path="res://Assets/character_body_2d.gd" id="2_81rfv"]
 [ext_resource type="Texture2D" uid="uid://bmicauswout7l" path="res://Assets/Shadow.png" id="4_ybe82"]
+[ext_resource type="Script" path="res://Effects/spawn_effect_manager.gd" id="5_4vj3q"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qmc6n"]
 radius = 4.0
@@ -55,3 +56,6 @@ z_index = 1
 z_as_relative = false
 position = Vector2(0, -6)
 texture = ExtResource("4_ybe82")
+
+[node name="SpawnHexagonEffectManager" type="Node2D" parent="."]
+script = ExtResource("5_4vj3q")

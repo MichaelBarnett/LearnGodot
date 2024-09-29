@@ -1,19 +1,30 @@
 class_name HexLib
 
-const CUBE_DIRECTION_VECTORS = [
+const CUBE_DIRECTION_VECTORS := [
 	Vector3i(+1, 0, -1), Vector3i(0, +1, -1), Vector3i(-1, +1, 0), 
 	Vector3i(-1, 0, 1), Vector3i(0, -1, 1), Vector3i(+1, -1, 0), 
 ]
 
-const AXIAL_DIRECTION_VECTORS = [
+const AXIAL_DIRECTION_VECTORS := [
 	Vector2i(+1, 0), Vector2i(0, +1), Vector2i(-1, +1), 
 	Vector2i(-1, 0), Vector2i(0, -1), Vector2i(+1, -1), 
 ]
 
-const HEX_SIZE : Vector2 = Vector2(64, 64)
+const HEX_SIZE : Vector2 = Vector2(128, 128)
 const HEX_OFFSETS : Vector2 = Vector2(HEX_SIZE.x, HEX_SIZE.y * 3/4)
 const HEX_ASPECT_RATIO : float = 2.0 / sqrt(3)
 const HEX_HALFWIDTH : float = HEX_OFFSETS.x / 2
+const HEX_HALFOFFSETS : Vector2 = HEX_OFFSETS / 2
+
+const HEX_EDGE_CENTRES := [
+	Vector2i(HEX_HALFOFFSETS.x,0.0),
+	Vector2i(HEX_HALFOFFSETS.x/2,HEX_OFFSETS.y/2),
+	Vector2i(-HEX_HALFOFFSETS.x/2,HEX_OFFSETS.y/2),
+	Vector2i(-HEX_HALFOFFSETS.x,0.0),
+	Vector2i(-HEX_HALFOFFSETS.x/2,-HEX_OFFSETS.y/2),
+	Vector2i(HEX_HALFOFFSETS.x/2,-HEX_OFFSETS.y/2)
+]
+
 
 static func axial_to_pixel(coord : Vector2) -> Vector2:
 	return Vector2((coord.x * HEX_OFFSETS.x) + coord.y * HEX_HALFWIDTH, 

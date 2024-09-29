@@ -35,7 +35,15 @@ func update_screen() -> void:
 	_debug_text = str(window_size) + " " + str(Vector2(OUTCOME_HORIZONTAL_PIXEL_RESOLUTION, DESIRED_VERTICAL_PIXEL_RESOLUTION)) + " " + str(screen_ratio)
 
 func _process(delta : float) -> void:
-	my_camera.global_position = lerp(my_camera.global_position, my_player.global_position+my_player.velocity*CAMERA_AHEAD_SCALE, delta*CAMERA_SPEED)
+	#var target_camera_position : Vector2 = HexLib.axial_to_pixel(HexLib.round_axial(HexLib.pixel_to_axial(my_player.global_position)))
+	var target_camera_position : Vector2 = my_player.global_position+my_player.velocity*CAMERA_AHEAD_SCALE
+	
+	my_camera.global_position = lerp(
+		my_camera.global_position, 
+		target_camera_position, 
+		delta*CAMERA_SPEED
+	)
+	
 	var actual_camera_position : Vector2 = my_camera.global_position
 	var stabilisation_offset : Vector2 = Vector2(
 		actual_camera_position.round().x - actual_camera_position.x, 

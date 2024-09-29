@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://ixrrmm2we7ve"]
+
+[ext_resource type="Script" path="res://GameplayElements/World/HexRiver.gd" id="1_hf4u3"]
+[ext_resource type="Texture2D" uid="uid://cl64b68u2tmvf" path="res://Assets/HexaTest03.png" id="2_wxcme"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="HexRiver2D" type="Line2D" parent="."]
+position = Vector2(432, 341)
+points = PackedVector2Array(0, 0)
+default_color = Color(0.588235, 0.662745, 0.756863, 1)
+script = ExtResource("1_hf4u3")
+EXIT_EDGE = 5
+
+[node name="HexaTest03" type="Sprite2D" parent="HexRiver2D"]
+z_index = -10
+texture = ExtResource("2_wxcme")

@@ -64,3 +64,22 @@ func store_hexagon(coord : Vector2i) -> void:
 
 func get_nearest_hexagon_id(coord : Vector2) -> Vector2i:
 	return HexLib.round_axial(HexLib.pixel_to_axial(coord))
+	
+func get_required_hexagon_format(coord : Vector2i) -> HexEdgeFormat:
+	var neighbour_coords = HexLib.get_ring(coord, 1)
+	var OutputHexEdgeFormat : HexEdgeFormat
+	var out : HexEdgeFormat
+	for i in range(6):
+		var hex_tile = placed_hexagons.find_key(neighbour_coords[i])
+		if hex_tile:
+			out.i_set(i, hex_tile.format.i_get(i+3))
+		else:
+			out.i_set(i, HexEdgeFormat.HexEdge.ANY)
+	return out
+	
+func collapse_hexagon_format(input : HexEdgeFormat) -> HexEdgeFormat:
+	""" Insert spawn logic. """
+	for i : int in range(6):
+		if input.i_get(i) == HexEdgeFormat.HexEdge.ANY:
+			input.i_set(i, HexEdgeFormat.HexEdge.CLEAR)
+	return input

@@ -1,16 +1,12 @@
 [gd_scene load_steps=9 format=3 uid="uid://dhyco2plw1s6"]
 
 [ext_resource type="Script" path="res://GameplayElements/World/Hexagons/Hexagontile.gd" id="1_7eh45"]
-[ext_resource type="Shader" path="res://Shaders/spawn-effect.gdshader" id="2_1mwnp"]
-[ext_resource type="Texture2D" uid="uid://bpgsn3p3ch3fa" path="res://Assets/HexaTest.png" id="2_figmm"]
+[ext_resource type="Texture2D" uid="uid://cl64b68u2tmvf" path="res://Assets/HexaTest03.png" id="2_5ryx2"]
 [ext_resource type="Texture2D" uid="uid://cefxmjd7gbs0x" path="res://Assets/tree01.png" id="3_le3g0"]
 [ext_resource type="Texture2D" uid="uid://bmicauswout7l" path="res://Assets/Shadow.png" id="4_84o5g"]
-[ext_resource type="PackedScene" uid="uid://c2ecc2m34wqlr" path="res://Assets/HexagonSummonEffect.tscn" id="6_m2lr4"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_6j4q4"]
-shader = ExtResource("2_1mwnp")
-shader_parameter/spawn_progress = 0.0
-shader_parameter/tolerance = 0.05
+[ext_resource type="PackedScene" uid="uid://c2ecc2m34wqlr" path="res://Effects/HexagonSummonEffect.tscn" id="6_m2lr4"]
+[ext_resource type="Script" path="res://Effects/spawn_effect_manager.gd" id="7_fewam"]
+[ext_resource type="Script" path="res://GameplayElements/World/HexRiver.gd" id="7_hvx4q"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_8l2j5"]
 vertices = PackedVector2Array(32, -15.8203, 32, 15.8203, 0, 31.8203, -32, 15.8203, -32, -15.8203, 0, -31.8203)
@@ -25,20 +21,20 @@ script = ExtResource("1_7eh45")
 modulate = Color(0.960351, 0.960351, 0.960351, 1)
 y_sort_enabled = true
 position = Vector2(0, 32)
-texture = ExtResource("2_figmm")
+texture = ExtResource("2_5ryx2")
 offset = Vector2(0, -32)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 10
 z_as_relative = false
 y_sort_enabled = true
-material = SubResource("ShaderMaterial_6j4q4")
 position = Vector2(52, 3)
 texture = ExtResource("3_le3g0")
 offset = Vector2(0, -36)
 
 [node name="Sprite2D" type="Sprite2D" parent="Sprite2D"]
-z_index = -10
+z_index = 5
+z_as_relative = false
 position = Vector2(1, -2)
 texture = ExtResource("4_84o5g")
 
@@ -47,6 +43,15 @@ position = Vector2(1, 3)
 radius = 8.0
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+scale = Vector2(2, 2)
 navigation_polygon = SubResource("NavigationPolygon_8l2j5")
 
 [node name="ParticleRoot" parent="." instance=ExtResource("6_m2lr4")]
+
+[node name="SpawnHexagonEffectManager" type="Node2D" parent="."]
+script = ExtResource("7_fewam")
+
+[node name="HexRiver2D" type="Line2D" parent="."]
+z_index = 5
+default_color = Color(0.588235, 0.662745, 0.756863, 1)
+script = ExtResource("7_hvx4q")
