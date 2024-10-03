@@ -17,10 +17,10 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if  %HexManager:
 		CurrentHexagonID = %HexManager.get_nearest_hexagon_id(Vector2(position.x, position.y))
-		var neighbours = HexLib.get_axiali_neighbours(CurrentHexagonID)
+		#var neighbours = HexLib.get_axiali_neighbours(CurrentHexagonID)
 		%HexManager.get_or_create_hexagon(CurrentHexagonID)
-		for neighbour in neighbours:
-			%HexManager.get_or_create_hexagon(neighbour)
+		#for neighbour in neighbours:
+		#	%HexManager.get_or_create_hexagon(neighbour)
 	
 func _physics_process(delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration.

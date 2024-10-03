@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://k4jfsu7pwy0t"]
+
+[ext_resource type="Shader" path="res://Shaders/MS_River.gdshader" id="1_73fva"]
+[ext_resource type="Texture2D" uid="uid://q00vkfue4yp0" path="res://Assets/noise128.png" id="2_r48jg"]
+
+[resource]
+shader = ExtResource("1_73fva")
+shader_parameter/noise_texture = ExtResource("2_r48jg")

@@ -1,6 +1,6 @@
 shader_type canvas_item;
 
-uniform float spawn_progress : hint_range(0.0,1.0) = 0.0;
+uniform float spawn_progress : hint_range(0.0,1.0) = 1.0;
 uniform sampler2D noise_texture;
 uniform float tolerance = 0.05;
 

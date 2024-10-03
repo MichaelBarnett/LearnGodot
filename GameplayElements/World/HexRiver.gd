@@ -7,9 +7,11 @@ class_name HexRiver2D extends Line2D
 @export var EXIT_WIDTH : float = 24.0
 
 #const LineJointMode = LINE_JOINT_ROUND
-const RIVER_FIDELITY := 0.2
+const RIVER_FIDELITY := 0.5
 const RIVER_IN_OUT_HANDLES := 0.25
 const RIVER_SKEW_HANDLES := 0.65
+
+@onready var my_shader_material = preload("res://Shaders/RiverShaderMaterial.tres")
 
 func _ready() -> void:
 	setup()
@@ -18,7 +20,7 @@ func setup() -> void:
 	calculate_river_points()
 	width_curve = Curve.new()
 	width_curve.add_point(Vector2(0.0,ENTRY_WIDTH))
-	width_curve.add_point(Vector2(0.5,0.75*(ENTRY_WIDTH+EXIT_WIDTH)))
+	width_curve.add_point(Vector2(0.5,0.5*(ENTRY_WIDTH+EXIT_WIDTH)))
 	width_curve.add_point(Vector2(1.0,EXIT_WIDTH))
 	width = 1.0
 	texture_mode = LINE_TEXTURE_STRETCH
@@ -41,3 +43,4 @@ func calculate_river_points() -> void:
 		f+=RIVER_FIDELITY
 		
 	add_point(HexLib.HEX_EDGE_CENTRES[EXIT_EDGE])
+	material = my_shader_material
