@@ -47,6 +47,7 @@ navigation_polygon = SubResource("NavigationPolygon_8l2j5")
 [node name="ParticleRoot" parent="." instance=ExtResource("6_m2lr4")]
 
 [node name="DebugTexts" type="Node2D" parent="."]
+visible = false
 
 [node name="Right" type="Label" parent="DebugTexts"]
 modulate = Color(0, 0, 0, 1)
